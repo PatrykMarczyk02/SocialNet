@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SocialNet.Models.Post>
+
+@{
+    ViewData["Title"] = "My Posts";
+}
+
+<h2>My Posts</h2>
+
+@if (Model.Any())
+{
+    @foreach (var post in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@User.Identity.Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@post.CreatedAt.ToLocalTime().ToString("g")</h6>
+                <p class="card-text">@Html.Raw(post.Content.Replace("\n", "<br>"))</p>
+
+                
+                <a href="/Post/Edit/@post.Id" class="btn btn-warning">Edit</a>
+
+                
+                <form method="post" action="/Post/Delete/@post.Id" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>You haven't created any posts yet.</p>
+    <a href="/Post/Create" class="btn btn-primary">Create Your First Post</a>
+}

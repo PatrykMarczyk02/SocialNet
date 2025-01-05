@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SocialNet.Models.User>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h1>User Management</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Login</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Email</td>
+                <td>@user.Login</td>
+                <td>
+                    <form method="post" asp-action="ChangeRole" asp-controller="Admin">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <select name="role" class="form-control d-inline w-auto">
+                            @if (user.Role == "user")
+                            {
+                                <option value="user" selected>User</option>
+                                <option value="admin">Admin</option>
+                            }
+                            else if (user.Role == "admin")
+                            {
+                                <option value="user">User</option>
+                                <option value="admin" selected>Admin</option>
+                            }
+                            else
+                            {
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary">Change Role</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form method="post" asp-action="DeleteUser" asp-controller="Admin" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

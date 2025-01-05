@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SocialNet.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h2>All Posts</h2>
+
+@foreach (var post in Model)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">@post.Author</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@post.CreatedAt.ToString("g")</h6>
+            <p class="card-text">@post.Content</p>
+        </div>
+    </div>
+}

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header text-center bg-success text-white">
+                    <h2>Register</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/Account/Register">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Login:</label>
+                            <input type="text" id="login" name="login" class="form-control" placeholder="Choose a login" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm your password" required />
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Register</button>
+                    </form>
+
+                    <p class="text-center mt-3">
+                        Already have an account? <a href="/Account/Login" class="text-decoration-none">Login here</a>
+                    </p>
+                </div>
+            </div>
+
+            @if (ViewData.ModelState.Values.SelectMany(v => v.Errors).Any())
+            {
+                <div class="alert alert-danger mt-3">
+                    <ul class="mb-0">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SocialNet.Models.Post>
+
+@{
+    ViewData["Title"] = "Welcome Page";
+}
+
+<h1>Welcome to SocialNet!</h1>
+<p>You are browsing as a guest. Log in or register to access more features.</p>
+<p>
+    <a href="/Account/Login" class="btn btn-primary">Log In</a>
+    <a href="/Account/Register" class="btn btn-success">Register</a>
+</p>
+
+<h2>Recent Posts</h2>
+
+@if (Model.Any())
+{
+    @foreach (var post in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@post.Author</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@post.CreatedAt.ToString("g")</h6>
+                <p class="card-text">@Html.Raw(post.Content.Replace("\n", "<br>"))</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No posts available.</p>
+}

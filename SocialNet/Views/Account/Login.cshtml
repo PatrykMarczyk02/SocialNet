@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header text-center bg-primary text-white">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Formularz logowania -->
+                    <form method="post" action="/Account/Login">
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Login:</label>
+                            <input type="text" id="login" name="login" class="form-control" placeholder="Enter your login" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+
+                    <!-- Link do rejestracji -->
+                    <p class="text-center mt-3">
+                        Don't have an account? <a href="/Account/Register" class="text-decoration-none">Register here</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Wyświetlanie błędów -->
+            @if (ViewData.ModelState.Values.SelectMany(v => v.Errors).Any())
+            {
+                <div class="alert alert-danger mt-3">
+                    <ul class="mb-0">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</div>

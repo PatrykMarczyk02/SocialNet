@@ -1,0 +1,16 @@
+﻿@model SocialNet.Models.Post
+
+@{
+    ViewData["Title"] = "Edit Post";
+}
+
+<h2>Edit Post</h2>
+
+<form method="post" action="/Post/Edit/@Model.Id">
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea id="content" name="content" class="form-control" rows="5" required>@Model.Content</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+    <a href="/Post/MyPosts" class="btn btn-secondary mt-3">Cancel</a>
+</form>

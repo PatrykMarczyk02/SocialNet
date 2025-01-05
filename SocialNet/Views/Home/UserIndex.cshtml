@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SocialNet.Models.Post>
+
+@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<h1>Welcome, @User.Identity.Name!</h1>
+
+<div class="mb-3">
+    <a href="/Post/Create" class="btn btn-primary">Create New Post</a>
+    <a href="/Post/MyPosts" class="btn btn-secondary">My Posts</a>
+</div>
+
+<h2>Recent Posts</h2>
+
+@if (Model.Any())
+{
+    @foreach (var post in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@post.Author</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@post.CreatedAt.ToString("g")</h6>
+                <p class="card-text">@Html.Raw(post.Content.Replace("\n", "<br>"))</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No posts available.</p>
+}
