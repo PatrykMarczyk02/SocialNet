@@ -31,19 +31,34 @@ dotnet restore
 dotnet ef database update
 
 Należy zainstalować pakiety NuGet
+
 •	Microsoft.EntityFrameworkCore.Design
+
 •	Microsoft.EntityFrameworkCore.Tools
+
 •	Npgsql
+
 •	Npgsql.EntityFrameworkCore.PostgreSQL
+
 Baza danych zawiera dwóch zarejestrowanych użytkowników:
+
 Użytkownik 1:
+
 Login: admin
+
 Haslo: admin
+
 Rola: Admin
+
 Użytkownik 2:
+
 Login: user
+
 Haslo: user
+
 Rola: User
+
+W razie problemów należy pobrać PostgreSQL i zaimportować backup bazy Batabase.sql który znajduje się w głównym katalogu. Bazę tam należy ustawić tak jak adres wyżej
 
 Dokument techniczny zanjduje się w katalogu
 
