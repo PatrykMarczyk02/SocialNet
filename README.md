@@ -3,12 +3,18 @@ SocialNet
 1.	Krótki opis
 SocialNet to innowacyjna platforma społecznościowa, która umożliwia użytkownikom łatwe tworzenie wpisów tekstowych z pełną kontrolą nad opublikowanymi materiałami. Niezalogowani użytkownicy mogą przeglądać treści, natomiast reszta funkcji jest dostępna po zalogowaniu. System wykorzystuje bazę danych PostgreSQL do przechowywania danych użytkowników i treści, a także zapewnia bezpieczeństwo danych dzięki odpowiednim mechanizmom uwierzytelniania i autoryzacji.
 2.	Specyfikacja wykorzystanych technologii
+   
 Backend: C# .NET 8
+
 Baza danych: PostgreSQL
+
 Framework: ASP.NET Core MVC
+
 Autoryzacja: ASP.NET Identity
+
 UI: HTML, CSS, JavaScript 
-3.	Instrukcja pierwszego uruchomienia projektu
+
+5.	Instrukcja pierwszego uruchomienia projektu
 
 •	Upewnij się, że masz zainstalowanego dockera
 •	W katalogu głównym uruchom bazę danych PostgreSQL:
@@ -17,11 +23,17 @@ docker-compose up -d
 
  
 •	Po kilku sekundach baza danych będzie dostępna pod adresem:
+
 Host: localhost
+
 Port: 5432
+
 Username: postgres
+
 Password: admin
+
 Database: socialnet
+
 •	Przywróć zależności projektu:
 
 dotnet restore
@@ -58,7 +70,7 @@ Haslo: user
 
 Rola: User
 
-W razie problemów należy pobrać PostgreSQL i zaimportować backup bazy Batabase.sql który znajduje się w głównym katalogu. Bazę tam należy ustawić tak jak adres wyżej
+W razie problemów należy pobrać PostgreSQL i zaimportować backup bazy Database.sql który znajduje się w głównym katalogu. Bazę tam należy ustawić tak jak adres wyżej
 
 Dokument techniczny zanjduje się w katalogu
 
